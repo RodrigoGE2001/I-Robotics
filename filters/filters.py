@@ -16,7 +16,7 @@ def fourier_transform(signal, sample_rate=44100, duration=5):
 
 
 def iir_filter(signal, f_cutoff, f_sampling, fbf=False):
-    """Funcion de un filtro."""
+    """Funcion de un filtro iir."""
     b, a = iirfilter(4, Wn=f_cutoff, fs=f_sampling, btype="low", ftype="butter")
     if not fbf:
         filtered = lfilter(b, a, signal)
@@ -26,7 +26,7 @@ def iir_filter(signal, f_cutoff, f_sampling, fbf=False):
 
 
 def fir_filter(signal, nyq_rate, cutoff_hz):
-    """Funcion de otro filtro."""
+    """Funcion de un filtro fir."""
     width = 5.0 / nyq_rate
     ripple_db = 20.0
     N, beta = kaiserord(ripple_db, width)
